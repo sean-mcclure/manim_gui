@@ -1,0 +1,2 @@
+file '/tmp/input/videos/example_scenes/480p15/partial_movie_files/UpdatersExample/00000.mp4'
+file '/tmp/input/videos/example_scenes/480p15/partial_movie_files/UpdatersExample/00001.mp4'
