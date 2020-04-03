@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from manimlib.imports import *
+import json
 
 class OpeningManimExample(Scene):
     def construct(self):
@@ -121,3 +122,23 @@ class UpdatersExample(Scene):
         self.wait()
 
 # See old_projects folder for many, many more
+
+
+###########################################################
+
+
+class run_generic_manim(Scene):
+    def construct(self):
+        with open('executions/execs.json') as json_file:
+            execs = json.load(json_file)
+        if(execs["my_project_1"][0] == "make_circle"):
+            circle = Circle()
+        square = Square()
+        square.flip(RIGHT)
+        square.rotate(-3 * TAU / 8)
+        circle.set_fill(PINK, opacity=0.5)
+
+        self.play(ShowCreation(square))
+        self.play(Transform(square, circle))
+        self.play(FadeOut(square))
+

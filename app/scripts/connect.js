@@ -19,3 +19,18 @@ function call_manim(type) {
         }
     })
 }
+
+function call_execution() {
+    params = {
+        "function": "build_execution_object",
+        "project" : "my_project_1",
+        "execution": "make_circle"
+    }
+    az.call_api({
+        "url": "http://127.0.0.1:5000/call_function",
+        "parameters": params,
+        "done": function(data) {
+            console.log(data)
+        }
+    })
+}
