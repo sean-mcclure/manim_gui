@@ -16,6 +16,7 @@ def list_videos(path_to_directory):
 def call_shell(manim_choice):
     os.chdir(config["input_path"])
     os.system("INPUT_PATH=" + config["input_path"] + " OUTPUT_PATH=" + config["output_path"] + " docker-compose run manim example_scenes.py " + manim_choice + " -l")
+    os.chdir("../")
 
 def write_execs_to_disk(execs):
     with open('manim/executions/execs.json', 'w') as outfile:

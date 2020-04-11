@@ -60,7 +60,7 @@ class OpeningManimExample(Scene):
         self.wait()
 
 
-class SquareToCircle(Scene):
+class square_to_circle(Scene):
     def construct(self):
         circle = Circle()
         square = Square()
@@ -127,18 +127,21 @@ class UpdatersExample(Scene):
 ###########################################################
 
 
-class run_generic_manim(Scene):
+class piece_together_scene(Scene):
     def construct(self):
         with open('executions/execs.json') as json_file:
             execs = json.load(json_file)
+
         if(execs["my_project_1"][0] == "make_circle"):
             circle = Circle()
-        square = Square()
-        square.flip(RIGHT)
-        square.rotate(-3 * TAU / 8)
-        circle.set_fill(PINK, opacity=0.5)
+            self.play(ShowCreation(circle))
 
-        self.play(ShowCreation(square))
-        self.play(Transform(square, circle))
-        self.play(FadeOut(square))
+        if (execs["my_project_1"][0] == "add_text"):
+            example_text = TextMobject(
+                "This is a some text",
+                tex_to_color_map={"text": YELLOW}
+            )
+            self.play(Write(example_text))
+
+
 
