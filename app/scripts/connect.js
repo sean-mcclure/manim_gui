@@ -8,7 +8,7 @@ function create_and_play_video_from_execution_object() {
         "parameters": params,
         "done": function() {
             az.empty_contents("video_layout_cells", 2)
-            az.add_video("video_layout_cells", 2, {
+            az.add_video("video_layout_cells", 1, {
                 "this_class": "video_preview",
                 "video_path": "../manim/videos/example_scenes/480p15/piece_together_scene.mp4"
             })
@@ -43,4 +43,10 @@ function build_and_save_execution_object(type) {
             create_and_play_video_from_execution_object()
         }
     })
+}
+
+az.hold_value.execution_object = {}
+function build_execution_object(project_title) {
+   az.hold_value.execution_object["project"] = project_title
+   az.hold_value.execution_object[project_title] = ""
 }

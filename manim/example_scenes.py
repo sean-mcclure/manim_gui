@@ -134,6 +134,7 @@ class piece_together_scene(Scene):
 
         if(execs["my_project_1"][0] == "make_circle"):
             circle = Circle()
+            circle.set_fill("#33aade", opacity=1)
             self.play(ShowCreation(circle))
 
         if (execs["my_project_1"][0] == "add_text"):

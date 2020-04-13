@@ -47,6 +47,28 @@ az.hold_value.piece_calls = {
         })
     },
     "circle": function() {
+        az.empty_contents("video_layout_cells", 1)
+        az.add_button("video_layout_cells", 1, {
+            "this_class": "col_button",
+            "text": "CHOOSE COLOR"
+        })
+        az.style_button("col_button", 1, {
+            "background": "#33d9b2",
+            "color": "#141414"
+        })
+        az.add_event("col_button", 1, {
+            "type": "click",
+            "function": function() {
+                az.add_color_picker({
+            "this_class": "color_picker",
+            "function": function() {
+                az.style_sections("col_button", 1, {
+                    "background" : az.global_current_color
+                })
+            }
+        })
+            }
+        })
         az.add_button("video_layout_cells", 1, {
             "this_class": "add_button",
             "text": "ADD"
