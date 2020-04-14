@@ -24,22 +24,22 @@ az.style_sections("main_sections", 3, {
     "height": "400px"
 })
 az.add_image("main_sections", 1, {
-    "this_class" : "logo",
-    "image_path" : "img/3b1b.png"
+    "this_class": "logo",
+    "image_path": "img/3b1b.png"
 })
 az.style_image("logo", 1, {
-    "align" : "center",
-    "width" : "40px"
+    "align": "center",
+    "width": "40px"
 })
 az.add_text("main_sections", 1, {
-   "this_class" : "app_title",
-   "text" : "MANIM GUI"
+    "this_class": "app_title",
+    "text": "MANIM GUI"
 })
 az.style_text("app_title", 1, {
-   "align" : "center",
-   "font-size" : "22px",
-   "color" : "whitesmoke",
-     "margin-bottom" : "20px"
+    "align": "center",
+    "font-size": "22px",
+    "color": "whitesmoke",
+    "margin-bottom": "20px"
 })
 az.add_input("main_sections", 1, {
     "this_class": "hold_title",
@@ -87,6 +87,7 @@ az.style_scrollable_container("scroll_shapes", 1, {
     "border": "none",
     "align": "center"
 })
+hold_cnt = 0
 az.call_once_satisfied({
     "condition": "typeof(az.hold_value.piece_titles) !== 'undefined'",
     "function": function() {
@@ -128,7 +129,32 @@ az.call_once_satisfied({
                 az.add_event("piece_button", az.last_class_instance("piece_button"), {
                     "type": "click",
                     "function": function(this_id) {
-                        az.add_html("main_layout_cells", 2, {
+                        hold_cnt++
+                        az.add_layout("main_layout_cells", 2, {
+                            "this_class": "hold_added_buttons_layout_" + hold_cnt,
+                            "row_class": "hold_added_buttons_layout_rows_" + hold_cnt,
+                            "cell_class": "hold_added_buttons_layout_cells_" + hold_cnt,
+                            "number_of_rows": 1,
+                            "number_of_columns": 2
+                        })
+                        az.style_layout("hold_added_buttons_layout_" + hold_cnt, 1, {
+                            "height": "auto",
+                            "width": "100%",
+                            "margin-top": "5px",
+                            "column_widths": ["2%", "98%"],
+                            "border": 0
+                        })
+                        az.add_text("hold_added_buttons_layout_cells_" + hold_cnt, 1, {
+                            "this_class": "remove_row",
+                            "text": "X"
+                        })
+                        az.all_style_text("remove_row", {
+                            "align": "center",
+                            "color": "red",
+                            "font-size": "18px",
+                            "cursor": "pointer"
+                        })
+                        az.add_html("hold_added_buttons_layout_cells_" + hold_cnt, 2, {
                             "html": "<div class='hold_added_buttons'></div>"
                         })
                         az.style_html("hold_added_buttons", az.last_class_instance("hold_added_buttons"), {
@@ -157,6 +183,52 @@ az.call_once_satisfied({
                                 az.add_modal({
                                     "this_class": "piece_settings",
                                     "content_class": "piece_settings_content"
+                                })
+                                az.style_modal("piece_settings", 1, {
+                                    "background": "rgb(48, 57, 82)",
+                                    "width": "400px",
+                                    "height": "300px",
+                                    "border": "1px solid whitesmoke"
+                                })
+                                az.add_text("piece_settings_content", 1, {
+                                    "this_class": "settings_title",
+                                    "text": $("#" + this_id).text() + " settings"
+                                })
+                                az.style_text("settings_title", 1, {
+                                    "align": "center",
+                                    "font-size": "22px",
+                                    "color": "whitesmoke",
+                                    "margin-bottom": "20px"
+                                })
+                                Object.values(az.hold_value.piece_titles).forEach(function(elem, i) {
+                                    if (i !== 0) {
+                                        az.add_text("piece_settings_content", 1, {
+                                            "this_class": "this_settings_title",
+                                            "text": Object.keys(az.hold_value.piece_titles)[i + 1]
+                                        })
+                                        az.all_style_text("this_settings_title", {
+                                            "color": "whitesmoke",
+                                            "align": "center",
+                                            "font-size": "19px",
+                                            "margin-top": "10px",
+                                            "margin-bottom": "10px"
+                                        })
+                                        elem.forEach(function(this_setting) {
+                                            az.add_button("piece_settings_content", 1, {
+                                                "this_class": "settings_buttons",
+                                                "text": this_setting
+                                            })
+                                            az.style_button("settings_buttons", az.last_class_instance("settings_buttons"), {
+                                                "background": "#33d9b2",
+                                                "color": "#141414",
+                                                "box-shadow": "2px 2px 2px black",
+                                                "border": "1px solid white",
+                                                "display": "block",
+                                                "align": "center",
+                                                "margin": "10px"
+                                            })
+                                        })
+                                    }
                                 })
                             }
                         })
