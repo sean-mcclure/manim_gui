@@ -80,23 +80,33 @@ az.add_scrollable_container("main_layout_cells", 1, {
     "this_class": "scroll_shapes",
     "direction": "horizontal"
 })
-az.style_scrollable_container("scroll_shapes", 1, {
+az.add_scrollable_container("main_layout_cells", 1, {
+    "this_class": "scroll_shapes",
+    "direction": "horizontal"
+})
+az.all_style_scrollable_container("scroll_shapes", {
     "width": "100%",
     "height": "40px",
     "background": "transparent",
     "border": "none",
-    "align": "center"
+    "align": "center",
+    "margin-bottom" : "10px"
 })
 hold_cnt = 0
 az.call_once_satisfied({
     "condition": "typeof(az.hold_value.piece_titles) !== 'undefined'",
     "function": function() {
         az.call_multiple({
-            "iterations": az.hold_value.piece_titles.Shapes.length,
+            "iterations": Object.keys(az.hold_value.piece_titles).length,
             "function": function(elem, index) {
-                az.add_button("scroll_shapes", 1, {
+                if(index < 6) {
+                   var use_index = 1
+                } else {
+                   var use_index = 2
+                }
+                az.add_button("scroll_shapes", use_index, {
                     "this_class": "piece_button",
-                    "text": az.hold_value.piece_titles.Shapes[index]
+                    "text": Object.keys(az.hold_value.piece_titles)[index]
                 })
                 az.all_style_button("piece_button", {
                     "background": "#33d9b2",
@@ -129,6 +139,7 @@ az.call_once_satisfied({
                 az.add_event("piece_button", az.last_class_instance("piece_button"), {
                     "type": "click",
                     "function": function(this_id) {
+                        if(az.grab_value("hold_title", 1) !== "") {
                         hold_cnt++
                         az.add_layout("main_layout_cells", 2, {
                             "this_class": "hold_added_buttons_layout_" + hold_cnt,
@@ -161,9 +172,11 @@ az.call_once_satisfied({
                             "margin-top": "5px",
                             "background": "#d1ccc0"
                         })
+                        var button_id = "button_" + az.makeid()
                         az.add_button("hold_added_buttons", az.last_class_instance("hold_added_buttons"), {
                             "this_class": "timeline_button",
-                            "text": $("#" + this_id).text()
+                            "text": $("#" + this_id).text(),
+                            "this_id" : button_id
                         })
                         az.style_button("timeline_button", az.last_class_instance("timeline_button"), {
                             "background": "#33d9b2",
@@ -174,7 +187,7 @@ az.call_once_satisfied({
                         az.add_event("timeline_button", az.last_class_instance("timeline_button"), {
                             "type": "click",
                             "function": function() {
-                                az.hold_value.piece_calls[$("#" + this_id).text()]()
+                                //az.hold_value.piece_calls[$("#" + this_id).text()]()
                             }
                         })
                         az.add_event("timeline_button", az.last_class_instance("timeline_button"), {
@@ -200,40 +213,46 @@ az.call_once_satisfied({
                                     "color": "whitesmoke",
                                     "margin-bottom": "20px"
                                 })
-                                Object.values(az.hold_value.piece_titles).forEach(function(elem, i) {
-                                    if (i !== 0) {
-                                        az.add_text("piece_settings_content", 1, {
-                                            "this_class": "this_settings_title",
-                                            "text": Object.keys(az.hold_value.piece_titles)[i + 1]
+                                Object.keys(az.hold_value.piece_titles[$("#" + this_id).text()]).forEach(function(elem, i) {
+                                    az.add_text("piece_settings_content", 1, {
+                                        "this_class": "this_settings_title",
+                                        "text": elem
+                                    })
+                                    az.all_style_text("this_settings_title", {
+                                        "color": "whitesmoke",
+                                        "align": "center",
+                                        "font-size": "19px",
+                                        "margin-top": "10px",
+                                        "margin-bottom": "10px"
+                                    })
+                                    Object.values(az.hold_value.piece_titles)[i][elem].forEach(function(this_setting) {
+                                        az.add_button("piece_settings_content", 1, {
+                                            "this_class": "settings_buttons",
+                                            "text": this_setting
                                         })
-                                        az.all_style_text("this_settings_title", {
-                                            "color": "whitesmoke",
+                                        az.style_button("settings_buttons", az.last_class_instance("settings_buttons"), {
+                                            "background": "#33d9b2",
+                                            "color": "#141414",
+                                            "box-shadow": "2px 2px 2px black",
+                                            "border": "1px solid white",
+                                            "display": "block",
                                             "align": "center",
-                                            "font-size": "19px",
-                                            "margin-top": "10px",
-                                            "margin-bottom": "10px"
+                                            "margin": "10px"
                                         })
-                                        elem.forEach(function(this_setting) {
-                                            az.add_button("piece_settings_content", 1, {
-                                                "this_class": "settings_buttons",
-                                                "text": this_setting
-                                            })
-                                            az.style_button("settings_buttons", az.last_class_instance("settings_buttons"), {
-                                                "background": "#33d9b2",
-                                                "color": "#141414",
-                                                "box-shadow": "2px 2px 2px black",
-                                                "border": "1px solid white",
-                                                "display": "block",
-                                                "align": "center",
-                                                "margin": "10px"
-                                            })
-                                        })
-                                    }
+                                    })
                                 })
                             }
                         })
                         element = $(".timeline_button").eq(az.last_class_instance("timeline_button") - 1).get(0)
                         draggable = new PlainDraggable(element);
+                        draggable.onDrag = function(newPosition) {
+                            make_exec(button_id, newPosition)
+                        }
+                        } else {
+                        az.animate_element("hold_title", 1, {
+                            "type" : "rubberBand"
+                        })
+                        }
                     }
                 })
             }

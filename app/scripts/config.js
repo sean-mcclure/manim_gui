@@ -1,16 +1,88 @@
 az.hold_value.execution_object = {}
+
 az.hold_value.piece_titles = {
-    "Shapes": ["circle", "square", "rectangle", "ellipse", "pointer", "arrow", "rectangle", "ring"],
-    "Actions": ["move_to", "surround", "shift", "next_to", "add"],
-    "Directions": ["UP", "DOWN", "LEFT", "RIGHT"],
-    "Styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
-    "Text": ["TextMobject"],
-    "Equations": ["TextMobject"],
-    "Graphing": ["get_graph", "get_vertical_line_to_graph", "get_graph_label", "input_to_graph_point"],
-    "3D Scenes": ["NumberPlane", "calc_field2D", "set_camera_orientation", "move_camera", "begin_ambient_camera_rotation"],
-    "SVG Files": [],
-    "Effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        "circle" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "square" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "rectangle" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "ellipse" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "pointer" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "arrow" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "rectangle" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "ring" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "text" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "equation" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "graph" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "3D" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        },
+        "SVG" : {
+            "actions" : ["move_to", "surround", "shift", "next_to", "add"],
+            "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+            "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+        }
 }
+
+
+
 az.hold_value.piece_calls = {
     "TextMobject": function() {
         az.add_layout("video_layout_cells", 1, {
