@@ -193,54 +193,7 @@ az.call_once_satisfied({
                         az.add_event("timeline_button", az.last_class_instance("timeline_button"), {
                             "type": "right_click",
                             "function": function(this_id) {
-                                az.add_modal({
-                                    "this_class": "piece_settings",
-                                    "content_class": "piece_settings_content"
-                                })
-                                az.style_modal("piece_settings", 1, {
-                                    "background": "rgb(48, 57, 82)",
-                                    "width": "400px",
-                                    "height": "300px",
-                                    "border": "1px solid whitesmoke"
-                                })
-                                az.add_text("piece_settings_content", 1, {
-                                    "this_class": "settings_title",
-                                    "text": $("#" + this_id).text() + " settings"
-                                })
-                                az.style_text("settings_title", 1, {
-                                    "align": "center",
-                                    "font-size": "22px",
-                                    "color": "whitesmoke",
-                                    "margin-bottom": "20px"
-                                })
-                                Object.keys(az.hold_value.piece_titles[$("#" + this_id).text()]).forEach(function(elem, i) {
-                                    az.add_text("piece_settings_content", 1, {
-                                        "this_class": "this_settings_title",
-                                        "text": elem
-                                    })
-                                    az.all_style_text("this_settings_title", {
-                                        "color": "whitesmoke",
-                                        "align": "center",
-                                        "font-size": "19px",
-                                        "margin-top": "10px",
-                                        "margin-bottom": "10px"
-                                    })
-                                    Object.values(az.hold_value.piece_titles)[i][elem].forEach(function(this_setting) {
-                                        az.add_button("piece_settings_content", 1, {
-                                            "this_class": "settings_buttons",
-                                            "text": this_setting
-                                        })
-                                        az.style_button("settings_buttons", az.last_class_instance("settings_buttons"), {
-                                            "background": "#33d9b2",
-                                            "color": "#141414",
-                                            "box-shadow": "2px 2px 2px black",
-                                            "border": "1px solid white",
-                                            "display": "block",
-                                            "align": "center",
-                                            "margin": "10px"
-                                        })
-                                    })
-                                })
+                                pop_timeline_settings(this_id)
                             }
                         })
                         element = $(".timeline_button").eq(az.last_class_instance("timeline_button") - 1).get(0)
