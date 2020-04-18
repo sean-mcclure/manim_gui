@@ -1,5 +1,21 @@
 az.hold_value.execution_object = {}
 
+az.hold_value.shape_settings = {
+    "actions" : {
+        "move_to" : "",
+        "surround" : "",
+        "shift" : "",
+        "next_to" : "",
+        "add" : ""
+    },
+    "directions" : {
+        "UP",
+        "DOWN",
+        "LEFT",
+        "RIGHT"
+    }
+}
+
 az.hold_value.piece_titles = {
         "circle" : {
             "actions" : ["move_to", "surround", "shift", "next_to", "add"],
