@@ -64,7 +64,10 @@ function pop_timeline_settings(this_id) {
             "margin-bottom": "10px",
             "font-weight" : "bold"
         })
-        Object.values(az.hold_value.piece_titles)[i][elem].forEach(function(this_setting) {
+
+
+        Object.values(az.hold_value.piece_titles[$("#" + this_id).text()])[i].forEach(function(this_setting) {
+
             az.add_button("settings_scrollable", 1, {
                 "this_class": "settings_buttons",
                 "text": this_setting
@@ -91,5 +94,5 @@ function pop_timeline_settings(this_id) {
                 }
             })
         })
-    })
+        })
 }

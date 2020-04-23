@@ -9,10 +9,10 @@ az.hold_value.shape_settings = {
         "add" : ""
     },
     "directions" : {
-        "UP",
-        "DOWN",
-        "LEFT",
-        "RIGHT"
+        "UP" : "",
+        "DOWN": "",
+        "LEFT" : "",
+        "RIGHT" : ""
     }
 }
 
@@ -69,7 +69,8 @@ az.hold_value.piece_titles = {
             "actions" : ["move_to", "surround", "shift", "next_to", "add"],
             "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
             "styling": ["width", "height", "fill_color", "fill_opacity", "color", "inner_radius", "outer_radius", "set_color_by_tex"],
-            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"]
+            "effects": ["FadeOut", "rotate", "scale", "arrange_submobjects"],
+            "content" : ["add text"]
         },
         "equation" : {
             "actions" : ["move_to", "surround", "shift", "next_to", "add"],
