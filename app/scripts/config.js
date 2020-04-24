@@ -101,8 +101,8 @@ az.hold_value.piece_titles = {
 
 
 az.hold_value.piece_calls = {
-    "TextMobject": function() {
-        az.add_layout("video_layout_cells", 1, {
+    "add text": function() {
+        az.add_layout("settings_layout_cells", 2, {
             "this_class": "text_layout",
             "row_class": "text_layout_rows",
             "cell_class": "text_layout_cells",
@@ -112,6 +112,7 @@ az.hold_value.piece_calls = {
         az.style_layout("text_layout", 1, {
             "height": "auto",
             "width": "auto",
+            "align" : "center",
             "border": 0
         })
         az.add_input("text_layout_cells", 1, {
@@ -169,7 +170,8 @@ az.hold_value.piece_calls = {
         az.add_event("add_button", 1, {
             "type": "click",
             "function": function() {
-                build_and_save_execution_object("make_circle")
+                update_execution_objectbuild_and_save_execution_object(id, key, value)
+                build_and_save_execution_object()
             }
         })
     }

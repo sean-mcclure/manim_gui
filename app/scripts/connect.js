@@ -31,10 +31,16 @@ function build_and_save_execution_object(type) {
         "width" : "120px"
     })
     az.hold_value.recent_type = type
+    /*
     params = {
         "function": "build_execution_object",
         "project" : "my_project_1",
         "execution": type
+    }
+    */
+    params = {
+        "function" : "build_execution_object",
+        "execution_object" : JSON.stringify(az.hold_value.execution_object)
     }
     az.call_api({
         "url": "http://127.0.0.1:5000/call_function",

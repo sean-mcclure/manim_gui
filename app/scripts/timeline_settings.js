@@ -82,6 +82,13 @@ function pop_timeline_settings(this_id) {
                 "display": "block",
                 "margin": "10px"
             })
+
+                        az.add_event("settings_buttons", az.last_class_instance("settings_buttons"), {
+                            "type": "click",
+                            "function": function(this_id) {
+                                az.hold_value.piece_calls[$("#" + this_id).text()]()
+                            }
+                        })
             az.add_event("settings_buttons", az.last_class_instance("settings_buttons"), {
                 "type": "hover",
                 "function": function(this_id) {

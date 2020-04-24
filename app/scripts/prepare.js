@@ -185,12 +185,6 @@ az.call_once_satisfied({
                             "border": "1px solid white"
                         })
                         az.add_event("timeline_button", az.last_class_instance("timeline_button"), {
-                            "type": "click",
-                            "function": function() {
-                                //az.hold_value.piece_calls[$("#" + this_id).text()]()
-                            }
-                        })
-                        az.add_event("timeline_button", az.last_class_instance("timeline_button"), {
                             "type": "right_click",
                             "function": function(this_id) {
                                 pop_timeline_settings(this_id)
