@@ -1,4 +1,5 @@
 function pop_timeline_settings(this_id) {
+    az.hold_value_popped_id = this_id
     az.add_modal({
         "this_class": "piece_settings",
         "content_class": "piece_settings_content"

@@ -116,7 +116,7 @@ az.hold_value.piece_calls = {
             "border": 0
         })
         az.add_input("text_layout_cells", 1, {
-            "this_class": "hold_title",
+            "this_class": "text_to_add_input",
             "placeholder": "title...",
             "spellcheck": false,
             "maxlength": 30
@@ -132,7 +132,8 @@ az.hold_value.piece_calls = {
         az.add_event("text_button", 1, {
             "type": "click",
             "function": function() {
-                build_and_save_execution_object("add_text")
+                update_execution_object(az.hold_value_popped_id, "text", az.grab_value("text_to_add_input", 1))
+                //build_and_save_execution_object("add_text")
             }
         })
     },
