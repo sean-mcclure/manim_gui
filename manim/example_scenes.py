@@ -129,20 +129,26 @@ class UpdatersExample(Scene):
 
 class piece_together_scene(Scene):
     def construct(self):
+
         with open('executions/execs.json') as json_file:
             execs = json.load(json_file)
 
-        if(execs["my_project_1"][0] == "make_circle"):
-            circle = Circle()
-            circle.set_fill("#33aade", opacity=1)
-            self.play(ShowCreation(circle))
-
-        if (execs["my_project_1"][0] == "add_text"):
-            example_text = TextMobject(
-                "This is a some text",
-                tex_to_color_map={"text": YELLOW}
-            )
-            self.play(Write(example_text))
-
-
-
+        for key in execs.values():
+            for shape in key:
+                print(shape)
+                if shape["shape"] == "text":
+                    example_text = TextMobject(
+                        shape["text"],
+                        tex_to_color_map={"text": YELLOW}
+                    )
+                    self.play(Write(example_text))
+                if shape["shape"] == "circle":
+                    circle = Circle()
+                    circle.set_fill("#33aade", opacity=1)
+                    self.play(ShowCreation(circle))
+                if shape["shape"] == "latex":
+                    basel = TexMobject(
+                        "\\sum_{n=1}^\\infty "
+                        "\\frac{1}{n^2} = \\frac{\\pi^2}{6}"
+                    )
+                    self.play(Write(example_text))

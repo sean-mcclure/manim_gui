@@ -31,13 +31,6 @@ function build_and_save_execution_object(type) {
         "width" : "120px"
     })
     az.hold_value.recent_type = type
-    /*
-    params = {
-        "function": "build_execution_object",
-        "project" : "my_project_1",
-        "execution": type
-    }
-    */
     params = {
         "function" : "build_execution_object",
         "execution_object" : JSON.stringify(az.hold_value.execution_object)
@@ -49,10 +42,4 @@ function build_and_save_execution_object(type) {
             create_and_play_video_from_execution_object()
         }
     })
-}
-
-az.hold_value.execution_object = {}
-function build_execution_object(project_title) {
-   az.hold_value.execution_object["project"] = project_title
-   az.hold_value.execution_object[project_title] = ""
 }

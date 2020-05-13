@@ -133,7 +133,7 @@ az.hold_value.piece_calls = {
             "type": "click",
             "function": function() {
                 update_execution_object(az.hold_value_popped_id, "text", az.grab_value("text_to_add_input", 1))
-                //build_and_save_execution_object("add_text")
+                build_and_save_execution_object()
             }
         })
     },
@@ -171,8 +171,9 @@ az.hold_value.piece_calls = {
         az.add_event("add_button", 1, {
             "type": "click",
             "function": function() {
-                update_execution_objectbuild_and_save_execution_object(id, key, value)
-                build_and_save_execution_object()
+
+                update_execution_object(id, key, value)
+                //build_and_save_execution_object("text")
             }
         })
     }

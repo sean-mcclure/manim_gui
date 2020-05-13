@@ -23,9 +23,7 @@ def write_execs_to_disk(execs):
         json.dump(execs, outfile)
 
 execs = {}
-def build_execution_object(execution_obj):
-     exec_obj = json.dumps(execution_obj)
-   # execs[project] = []
-   # execs[project].append(execution)
+def build_execution_object(execution_obj_str):
+    exec_obj = json.loads(execution_obj_str)
     write_execs_to_disk(exec_obj)
     return True

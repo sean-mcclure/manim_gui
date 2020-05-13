@@ -2,7 +2,7 @@ az.load_font("Oxanium")
 az.style_page({
     "background": "#303952",
     "font-family": "Oxanium",
-    "min-width": "1200px"
+   // "min-width": "1200px"
 })
 az.add_sections({
     "this_class": "main_sections",
@@ -67,30 +67,15 @@ az.add_layout("main_sections", 1, {
 az.style_layout("main_layout", 1, {
     "height": "auto",
     "width": "100%",
-    "border": 0
+    "border": 1
 })
 az.all_style_layout("main_layout_cells", {
     "valign": "top",
     "padding": "10px"
 })
 az.style_layout("main_layout_rows", 1, {
-    "height": "30px"
-})
-az.add_scrollable_container("main_layout_cells", 1, {
-    "this_class": "scroll_shapes",
-    "direction": "horizontal"
-})
-az.add_scrollable_container("main_layout_cells", 1, {
-    "this_class": "scroll_shapes",
-    "direction": "horizontal"
-})
-az.all_style_scrollable_container("scroll_shapes", {
-    "width": "100%",
-    "height": "40px",
-    "background": "transparent",
-    "border": "none",
-    "align": "center",
-    "margin-bottom" : "10px"
+    "height": "30px",
+    "text-align" : "center"
 })
 hold_cnt = 0
 az.call_once_satisfied({
@@ -104,7 +89,7 @@ az.call_once_satisfied({
                 } else {
                    var use_index = 2
                 }
-                az.add_button("scroll_shapes", use_index, {
+                az.add_button("main_layout_cells", 1, {
                     "this_class": "piece_button",
                     "text": Object.keys(az.hold_value.piece_titles)[index]
                 })
@@ -114,7 +99,8 @@ az.call_once_satisfied({
                     "width": "100px",
                     "display": "inline",
                     "border": "1px solid white",
-                    "margin-right": "5px"
+                    "margin-right": "5px",
+                    "margin-bottom" : "10px"
                 })
                 az.add_event("piece_button", az.last_class_instance("piece_button"), {
                     "type": "hover",
